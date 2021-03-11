@@ -2,17 +2,40 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image
+import time
 
 st.title('1st 超入門')
 
-st.write('Interactive Widgets')
+st.write('プログレスバーの表示')
 
-option = st.text_input('あなたの趣味を教えて下さい')
+'START‼'
 
-'あなたの好きな趣味は',option,'です。'
+latest_iteration = st.empty()
+bar = st.progress(0)
 
-condition = st.slider('あなたの今の調子は',0,100,50)
-'コンディション',condition
+for i in range(100):
+    latest_iteration.text(f'Iteration {i + 1}')
+    bar.progress(i + 1)
+    time.sleep(0.1)
+'Done!!!!!'
+
+left_column,right_column = st.beta_columns(2)
+button = left_column.button('右カラムに文字を表示')
+if button:
+    right_column.write('ここは右カラムです')
+
+
+expander = st.beta_expander('問い合わせ')
+expander.write('問い合わせ内容を書く')
+
+
+
+#option = st.text_input('あなたの趣味を教えて下さい')
+#condition = st.slider('あなたの今の調子は',0,100,50)
+
+#'あなたの好きな趣味は',option,'です。'
+#'コンディション',condition
+
 #IF st.checkbox('Show Image'):
 #    Imege.open('sample.jpg')
 #    st.Image(img,caption='Kohei Imanishi', use_columns_width=True)
