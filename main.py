@@ -1,19 +1,18 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from PIL import Imege
+from PIL import Image
 
 st.title('1st 超入門')
 
-st.write('DataFrame')
+st.write('Interactive Widgets')
 
+option = st.text_input('あなたの趣味を教えて下さい')
 
-Imege.open('sample.jpg')
-st.Image(img,caption='Kohei Imanishi', use_columns_width=True)
+'あなたの好きな趣味は',option,'です。'
 
-df = pd.DataFrame(
-    np.random.rand(100,2)/[50,50] + [35.69,139.70],
-    columns=['lat','lon']
-)
-
-st.map(df)
+condition = st.slider('あなたの今の調子は',0,100,50)
+'コンディション',condition
+#IF st.checkbox('Show Image'):
+#    Imege.open('sample.jpg')
+#    st.Image(img,caption='Kohei Imanishi', use_columns_width=True)
